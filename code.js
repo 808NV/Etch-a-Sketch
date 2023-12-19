@@ -1,8 +1,21 @@
-const rows = document.createElement('div');
-const columns = document.createElement('div');
+let rows = 16;
+let columns = 16;
 const container = document.querySelector('.container');
+const gridSide = 600;
 
-container.appendChild(columns);
-container.appendChild(rows);
+container.style.width = `${gridSide}px`;
+container.style.height = `${gridSide}px`;
 
-console.log(container);
+function createGridCells() {
+    for (let i = 0; i < (rows * columns); i++) {
+        const gridCell = document.createElement('div');
+
+        gridCell.style.width = `${(gridSide / columns) - 2}px`;
+        gridCell.style.height = `${(gridSide / rows) - 2}px`;
+        gridCell.classList.add('cell');
+
+        container.appendChild(gridCell);
+    }
+}
+
+createGridCells();
